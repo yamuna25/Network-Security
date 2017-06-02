@@ -1,0 +1,13 @@
+access-list,1,deny, ,192.168.2.0,0.0.0.255, , , 
+interface,E0,ip-access-group,1,out, , , 
+access-list,2,deny, ,192.168.3.1,0.0.0.0, , , 
+interface,E1,ip-access-group,2,out, , , 
+access-list,101,deny,tcp,192.168.2.1,0.0.0.0,192.168.3.1,0.0.0.0,eq 20
+access-list,101,deny,tcp,192.168.2.1,0.0.0.0,192.168.3.1,0.0.0.0,eq 21
+access-list,101,permit,ip,any,any, , , 
+interface,E0,ip-access-group,101,out, , , , 
+access-list,102,deny,tcp,192.168.3.1,0.0.0.0,192.168.2.1,0.0.0.0,eq 20
+access-list,102,deny,tcp,192.168.3.1,0.0.0.0,192.168.2.1,0.0.0.0,eq 21
+access-list,102,deny,tcp,192.168.3.1,0.0.0.0,192.168.2.1,0.0.0.0,eq 22
+access-list,102,permit,ip,any,any, , , 
+interface,E0,ip-access-group,102,out, , , , 
